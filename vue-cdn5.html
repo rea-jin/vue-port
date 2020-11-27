@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モーダルのサンプル</title>
+   
+
+</head>
+  
+  <body>
+    <style>
+      .modal-mask {
+      position: fixed;
+      z-index: 9998;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      }
+
+      .modal-container {
+      width: 300px;
+      margin: 20% auto;
+      padding: 20px 30px;
+      border-radius: 2px;
+      background-color: #fff;
+      }
+    </style>
+    
+   <div id="app">
+    /* クリックでisActiveをtrueにする */
+     <button @click="isActive = true">モーダルを見る</button>
+     /* isActiveがtrueならapp.jsの方でtemplateを表示 */
+     <modal v-if="isActive" @close="isActive = false">
+     </modal>
+   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="js/app3.js"></script>
+    
+</body>
+</html>
