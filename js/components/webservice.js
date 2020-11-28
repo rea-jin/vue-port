@@ -6,10 +6,7 @@ Vue.component('webservice', {
         
        }
     },
-    components: {
-        Hooper: window.Hooper.Hooper,
-        Slide: window.Hooper.Slide
-      },
+   
     template: `
     <hooper>
         <slide>

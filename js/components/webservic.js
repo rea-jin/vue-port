@@ -6,25 +6,22 @@ Vue.component('webservice', {
         
        }
     },
-    components: {
-        Hooper: window.Hooper.Hooper,
-        Slide: window.Hooper.Slide
-      },
+  
     template: `
-    <hooper>
-        <slide>
+    <div class="card-scroll">
+        <div class="card">
         slide1
-        </slide> 
+        </div> 
 
-        <slide>
+        <div class="card">
         slide2
-        </slide> 
+        </div> 
 
-        <slide>
+        <div class="card">
         slide3
-        </slide>
+        </div>
         
-    </hooper>
+    </div>
         `
  
  })

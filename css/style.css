@@ -252,40 +252,30 @@ a:hover {
   transform: scale(1.2);
 }
 
-.content .content__menu4 .hooper {
-  height: 80vh !important;
-}
-
-.content .content__menu4 .hooper .hooper-list .hooper-slide {
-  height: 50vh;
-  background-color: #62caaa;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border: 2px solid #fff;
-  font-size: 30px;
-  border-radius: 10px;
-}
-
-.content .content__menu4 .hooper .hooper-list .hooper-slide .card {
+.content .content__menu4 .card-scroll {
   background-color: #fcfcfc;
-  width: 80%;
+  overflow: scroll;
   margin: 1%;
-  transition: transform 0.3s ease;
 }
 
-.content .content__menu4 .hooper .hooper-list .hooper-slide .card .card_image {
+.content .content__menu4 .card-scroll .card {
+  display: block;
+  height: 30vh;
+  width: 80%;
+  border: 2px solid #444;
+  float: left;
+}
+
+.content .content__menu4 .card-scroll .card .card_image {
   width: 100%;
 }
 
-.content .content__menu4 .hooper .hooper-list .hooper-slide .card .card-title {
+.content .content__menu4 .card-scroll .card .card-title {
   text-align: center;
   margin: 3%;
 }
 
-.content .content__menu4 .hooper .hooper-list .hooper-slide .card .card-body {
+.content .content__menu4 .card-scroll .card .card-body {
   padding: 2%;
 }
 

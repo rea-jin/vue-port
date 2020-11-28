@@ -331,46 +331,37 @@ a:hover {
         }
        }  
        
-      //  スライダー ----------------------------------
-      .hooper{
-        height: 80vh !important;
-        .hooper-list{
-          
-        
-        .hooper-slide {
-          // display: block;
-          // width: 100% !important;
-        height: 50vh;
-        background-color: #62caaa;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        border: 2px solid #fff;
-        font-size: 30px;
-        border-radius: 10px;
-        .card{
+      //  スクロール ----------------------------------
+
+    
+        .card-scroll{
           background-color: $bg-color_main;
-          width:80%;
+          // width:100%;
+          overflow: scroll;
           margin:1%;
           // float:left;
-          transition: transform 0.3s ease; // animation
-          .card_image{
-            width: 100%;
-          }
-          .card-title{
-            text-align: center;
-            margin:3%;
-          }
-          .card-body{
-            padding:2%;
+          // transition: transform 0.3s ease; // animation
+          .card{
+            display:block;
+            height:30vh;
+            width:80%;
+            border: 2px solid #444;
+            float:left;
+            // overflow: scroll;
+            .card_image{
+              width: 100%;
+            }
+            .card-title{
+              text-align: center;
+              margin:3%;
+            }
+            .card-body{
+              padding:2%;
+            }
           }
         }
-      }
-      }
-        
-      }
+      
+      
     }
     &__menu5{
         background-color: $bg-color_sub3;
