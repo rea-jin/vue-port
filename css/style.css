@@ -267,6 +267,7 @@ a:hover {
   border: 2px solid #fff;
   font-size: 30px;
   border-radius: 10px;
+  flex-basis: auto;
 }
 
 .content .content__menu4 .hooper .hooper-list .hooper-slide .card {
