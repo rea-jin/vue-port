@@ -316,7 +316,6 @@ a:hover {
           float:left;
           transition: transform 0.3s ease; // animation
           .card_image{
-            // display: block;
             width: 100%;
           }
           .card-title{
@@ -331,42 +330,47 @@ a:hover {
           transform: scale(1.2);
         }
        }  
+       
       //  スライダー ----------------------------------
-      .VueCarousel{
-      .VueCarousel-wrapper{
-        // height:80%;
-        .VueCarousel-inner{
-          flex-basis: auto !important;
-          // height: auto;
-          visibility: visible !important;
-          .VueCarousel-slide {
-            background-color: rgba(255, 255, 255, 0.85);
-            width:50%;
-            height:50vh;
-            margin:1%;
-            overflow:scroll;
-            // float:left;
-            // transition: transform 0.3s ease; // animation
-            // font-size:12px;
-            // display: flex;
-            // align-items: center;
-            // justify-content: center;
-            box-sizing:border-box;
-            .card_image{
-              // display: block;
-              width: 100%;
-            }
-            .card-title{
-              text-align: center;
-              margin:3%;
-            }
-            .card-body{
-              padding:2%;
-            }
+      .hooper{
+        height: 80vh !important;
+        .hooper-list{
+          
+        
+        .hooper-slide {
+          // display: block;
+          // width: 100% !important;
+        height: 50vh;
+        background-color: #62caaa;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border: 2px solid #fff;
+        font-size: 30px;
+        border-radius: 10px;
+        .card{
+          background-color: $bg-color_main;
+          width:80%;
+          margin:1%;
+          // float:left;
+          transition: transform 0.3s ease; // animation
+          .card_image{
+            width: 100%;
+          }
+          .card-title{
+            text-align: center;
+            margin:3%;
+          }
+          .card-body{
+            padding:2%;
           }
         }
-     }
-    }
+      }
+      }
+        
+      }
     }
     &__menu5{
         background-color: $bg-color_sub3;
