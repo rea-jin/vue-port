@@ -1,4 +1,15 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+/*
+.foo {
+  color: blue;
+  @include mq() { // 引数を省略（初期値はmdの768px）
+    color: yellow;
+  }
+  @include mq(lg) { // 引数を個別に指定
+    color: red;
+  }
+}*/
 html, body {
   width: 100%;
   color: #0a0a0a;
@@ -42,6 +53,17 @@ a:hover {
   height: 100vh;
 }
 
+@media screen and (max-width: 414px) {
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 80px;
+    z-index: 10;
+  }
+}
+
 .sidebar__home, .sidebar__menu2, .sidebar__menu3, .sidebar__menu4, .sidebar__menu5 {
   background: #fcfcfc;
   font-size: 1.2rem;
@@ -59,6 +81,12 @@ a:hover {
   /* 横方向中央揃え */
   border: 5px ridge #3e942c;
   border-radius: 50px;
+}
+
+@media screen and (max-width: 414px) {
+  .sidebar__home, .sidebar__menu2, .sidebar__menu3, .sidebar__menu4, .sidebar__menu5 {
+    display: none;
+  }
 }
 
 .sidebar__active {
@@ -80,6 +108,14 @@ a:hover {
   border-radius: 0px;
 }
 
+@media screen and (max-width: 414px) {
+  .sidebar__active {
+    font-family: 'Oswald', sans-serif;
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .content {
   display: flex;
   align-items: center;
@@ -88,12 +124,102 @@ a:hover {
   background-color: #fcfcfc;
 }
 
+@media screen and (max-width: 414px) {
+  .content {
+    width: 100%;
+  }
+}
+
 .content__home, .content__menu2, .content__menu3, .content__menu4, .content__menu5 {
   position: relative;
   width: 95%;
   overflow: hidden;
   z-index: 1;
   height: 110vh;
+}
+
+.content__hello {
+  position: relative;
+  float: left;
+  display: flex;
+  -webkit-align-items: center;
+  /* 縦方向中央揃え（Safari用） */
+  align-items: center;
+  /* 縦方向中央揃え */
+  -webkit-justify-content: center;
+  /* 横方向中央揃え（Safari用） */
+  justify-content: center;
+  /* 横方向中央揃え */
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  font-size: 100px;
+  animation: pulse 1s ease-in forwards;
+}
+
+.content__hello .title {
+  font-size: 100px;
+}
+
+.content__hello .expand {
+  animation: expand 1s ease-in forwards;
+}
+
+.content .bar {
+  position: relative;
+  border: 5px ridge white;
+  border-radius: 5%;
+}
+
+.content .bar__top {
+  top: -5%;
+  left: 30%;
+  width: 35%;
+  height: 50%;
+  z-index: 2;
+}
+
+.content .bar__right {
+  top: 5%;
+  left: 50%;
+  width: 60%;
+  height: 65%;
+  z-index: 2;
+}
+
+.content .bar__left {
+  top: -55%;
+  left: 25%;
+  width: 45%;
+  height: 50%;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+.content .bar__bottom {
+  top: -130%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+}
+
+.content .bar__center {
+  top: -200%;
+  left: 55%;
+  width: 60%;
+  height: 70%;
+  transform: rotate(135deg);
+  z-index: 2;
+}
+
+.content .bar__circle {
+  top: 0;
+  left: 50%;
+  width: 60%;
+  height: 500px;
+  transform: rotate(135deg);
+  z-index: 3;
+  border-radius: 10%;
 }
 
 .content .content__home {
@@ -164,6 +290,12 @@ a:hover {
   background: linear-gradient(180deg, #1a9fc1 0%, #a1f8fe 25%, #65a8a2 50%);
 }
 
+@media screen and (max-width: 414px) {
+  .content .content__menu2 .text {
+    font-size: 1.2rem;
+  }
+}
+
 .content .content__menu3 {
   background: #5cb39f;
   background: linear-gradient(90deg, #5cb39e 25%, #90daee 60%, #c8f5ff 95%);
@@ -171,6 +303,13 @@ a:hover {
   color: #fff;
   text-shadow: 1px 1px 2px #444;
   padding: 5% 0%;
+}
+
+@media screen and (max-width: 414px) {
+  .content .content__menu3 {
+    font-size: 1.2rem;
+    padding-top: 20%;
+  }
 }
 
 .content .content__menu3 .status-bar {
@@ -235,6 +374,12 @@ a:hover {
   transition: transform 0.3s ease;
 }
 
+@media screen and (max-width: 414px) {
+  .content .content__menu4 .card-slider .card {
+    width: 48%;
+  }
+}
+
 .content .content__menu4 .card-slider .card .card_image {
   width: 100%;
 }
@@ -280,86 +425,20 @@ a:hover {
 }
 
 .content .content__menu5 {
-  background-color: linear-gradient(90deg, #5cb39e 25%, #90daee 60%, #c8f5ff 95%);
+  background: linear-gradient(to top, rgba(67, 213, 174, 0.7) 0%, rgba(142, 208, 188, 0.7) 100%), url("../img/218400_l.jpg");
+  /* 背景画像指定 */
+  background-repeat: no-repeat;
+  /* 背景の繰り返し設定 */
+  background-position: center;
+  /* 背景の位置指定 */
+  background-size: cover;
+  /* 背景のサイズ */
   overflow: hidden;
   z-index: 1;
   position: relative;
   top: -5px;
   height: 110vh;
-}
-
-.content .content__hello {
-  position: relative;
-  float: left;
-  display: flex;
-  -webkit-align-items: center;
-  /* 縦方向中央揃え（Safari用） */
-  align-items: center;
-  /* 縦方向中央揃え */
-  -webkit-justify-content: center;
-  /* 横方向中央揃え（Safari用） */
-  justify-content: center;
-  /* 横方向中央揃え */
-  height: 100%;
-  width: 100%;
-  z-index: 3;
-  font-size: 100px;
-  animation: pulse 1s ease-in forwards;
-}
-
-.content .content__hello .title {
-  font-size: 100px;
-}
-
-.content .content__hello .expand {
-  animation: expand 1s ease-in forwards;
-}
-
-.content .bar {
-  position: relative;
-  border: 5px ridge white;
-  border-radius: 5%;
-}
-
-.content .bar__top {
-  top: -5%;
-  left: 30%;
-  width: 35%;
-  height: 50%;
-  z-index: 2;
-}
-
-.content .bar__right {
-  top: 5%;
-  left: 50%;
-  width: 60%;
-  height: 65%;
-  z-index: 2;
-}
-
-.content .bar__left {
-  top: -55%;
-  left: 25%;
-  width: 45%;
-  height: 50%;
-  transform: rotate(45deg);
-  z-index: 2;
-}
-
-.content .bar__bottom {
-  top: -130%;
-  left: -10%;
-  width: 50%;
-  height: 50%;
-}
-
-.content .bar__center {
-  top: -200%;
-  left: 55%;
-  width: 60%;
-  height: 70%;
-  transform: rotate(135deg);
-  z-index: 2;
+  padding: 10%;
 }
 
 @keyframes pulse {

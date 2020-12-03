@@ -9,7 +9,6 @@ Vue.component('nav-works', {
     template: `
     <div class="content__menu4">
         <ul class="menu__bar">
-        制作物<br>
             <li class="menu-button" @click="menu='port'" :class="{ 'menu-button--active':menu === 'port'}">ポートフォリオサイト</li>
             <li class="menu-button" @click="menu='corp'" :class="{ 'menu-button--active':menu === 'corp'}">コーポレートサイト</li>
             <li class="menu-button" @click="menu='lp'" :class="{ 'menu-button--active':menu === 'lp'}">ランディングページ</li>

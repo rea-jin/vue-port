@@ -10,7 +10,7 @@ Vue.component('landing', {
             <a href="https://6340-touseki.xyz" target="_brank">
                 <img class="card_image" src="./img/clinic-lp.jpg" alt="ポートフォリオサイト">
             </a>
-            <div class="card-title">[自分のポートフォリオサイト]</div>
+            <div class="card-title">[クリニックのランディングページ]</div>
             <hr>
             <div class="card-body">
                 テンプレートサイトを使って、作成したクリニックのランディングページです。

@@ -1,3 +1,9 @@
+// =============================
+// ファイル取り込み
+// =============================
+@import "mixin";
+// google fonts ----------------
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 // ==============================
 // 変数
 // ==============================
@@ -44,20 +50,9 @@ $space_3l: 40px;
 $font-family_corp: 'Amatic SC', cursive;
 
 // メディアクエリのブレークポイント設定-----------------------------
-
-//@media screen and (max-width: 414px){
-//  .btn{
-//    font-size: .7em;
-//  }
-//}
-
-// 通常、変数として設定しておくと後々変更しやすくて便利
-//  !defaultはすでに変数に値が入っていた場合は何もせず、
-// 変数に値が入っていない時に割り当てられるもの
-// https://hail2u.net/blog/webdesign/how-to-use-bang-default-flag-in-sass-and-how-it-works.html
-//$breakpoint-sm: 400px !default;
-//$breakpoint-md: 768px !default;
-//$breakpoint-lg: 1000px !default;
+$breakpoint-sm: 414px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1000px !default;
 
 // マップ型変数を使うと便利 連想配列のようなもの
 $breakpoints: ( // プロパティ:値
@@ -76,12 +71,28 @@ $breakpoints: ( // プロパティ:値
 // #{}は「インターポーレーション」といって、演算できない箇所、
 // 変数使えない箇所でも使えるようにするものcalcなどでよく使う
 // http://book.scss.jp/code/c4/08.html
+
+// ブレイクポイントを定義した変数をmq()という@mixinで呼び出す
 @mixin mq($breakpoint: md) { // mqは関数名 引数はsm 他のもできる
   @media #{map-get($breakpoints, $breakpoint)} { // @mediaでメディアクエリーの関数を作る
-    @content; // 呼び出す時、includeとする
+    @content; 
   }
 }
+// 呼び出す時、includeとする
+/*
+.foo {
+  color: blue;
+  @include mq() { // 引数を省略（初期値はmdの768px）
+    color: yellow;
+  }
+  @include mq(lg) { // 引数を個別に指定
+    color: red;
+  }
+}*/
 // @media screen and (max-width: 414px)で返ってくる
+
+
+
 // smacssの設計思想
 // ==================================
 // base
@@ -132,6 +143,15 @@ a:hover {
     align-items: center;
     width:30%;
     height:100vh;
+    // media query ---------------------------------
+    @include mq(sm) { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 80px;
+    z-index: 10;
+    }
     &__home, &__menu2, &__menu3, &__menu4, &__menu5{
         background: $bg-color_main;
         font-size:$font-size_2l;
@@ -145,7 +165,11 @@ a:hover {
         justify-content: center; /* 横方向中央揃え */
         border:5px ridge rgb(62, 148, 44);
         border-radius:50px;
-    
+        // media query ---------------------------------
+        @include mq(sm) { 
+          display: none;
+       
+        }
       }
     &__active{
         background-color: $bg-color_main;
@@ -160,6 +184,13 @@ a:hover {
         justify-content: center; /* 横方向中央揃え */
         border:none;
         border-radius:0px;
+         // media query ---------------------------------
+         @include mq(sm) { 
+          font-family: 'Oswald', sans-serif;
+          width:100px;
+          height: 100px;
+          // border-radius: 40%;
+        }
     }
 }
 
@@ -173,6 +204,10 @@ a:hover {
     justify-content: center;
     width:70%;
     background-color: $bg-color_main;
+     // media query ---------------------------------
+     @include mq(sm) { 
+     width:100%;
+    }
     &__home, &__menu2, &__menu3, &__menu4, &__menu5{
         position: relative;
         width:95%;
@@ -181,9 +216,100 @@ a:hover {
         height:110vh;
     }
 
+// ================================
+// Top
+// ================================
+    &__hello{
+      position: relative;
+      float: left;
+      display: flex;
+      -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+      align-items: center; /* 縦方向中央揃え */
+      -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+      justify-content: center; /* 横方向中央揃え */
+      height:100%;
+      width:100%;
+      z-index:10;
+      font-size:100px;
+      animation: pulse 1s ease-in forwards;
+      .title{
+        font-size:100px;
+      }
+      .expand{
+        animation: expand 1s ease-in forwards;
+        // font-size:10px;
+        // color:red;
+        // background-color: #fbffd7;
+      }
+    }
+    // bar--------------------------------
+    .bar{
+      position: relative;
+      border:5px ridge rgb(255, 255, 255);
+      border-radius: 5%;
+      &__top{
+        // background-color: #affdc662;
+        top:-5%;
+        left:30%;
+        width:35%;
+        height:50%;
+        z-index:2;
+        // animation: 3s ease 0s pulse;
+      }
+      &__right{
+        // background-color: #d7fffe62;
+        top:5%;
+        left:50%;
+        width:60%;
+        height:65%;
+        z-index:2;
+        // animation: 3s ease 0s pulse;
+      }
+      &__left{
+        // background-color: #f0ffd762;
+        top:-55%;
+        left:25%;
+        width:45%;
+        height:50%;
+        transform: rotate(45deg);
+        z-index:2;
+        // animation: 3s ease 0s pulse;
+      }
+      &__bottom{
+        // background-color: #e8d7ff62;
+        top:-130%;
+        left:-10%;
+        width:50%;
+        height:50%;
+        // animation: 3s ease 0s pulse;
+      }
+      &__center{
+        // background-color: #d7fffebb;
+        top:-200%;
+        left:55%;
+        width:60%;
+        height:70%;
+        transform: rotate(135deg);
+        z-index:2;
+        // animation: 2s ease 0s pulse;
+      }
+      &__circle{
+        // background-color: #d7fffebb;
+        top:0;
+        left:50%;
+        width:60%;
+        height:500px;
+        transform: rotate(135deg);
+        z-index:3;
+        border-radius:10%;
+        // animation: 2s ease 0s pulse;
+      }
+    }
+
 // コンテンツ別
 .content{
-  // Menu1 ========================
+
+//======================= Menu1 ========================
     &__home{
       background: $bg-color_main4;
       background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
@@ -220,7 +346,8 @@ a:hover {
         }
       }
     }
-     // Menu2 ========================
+
+//=================== Menu2 ========================
     &__menu2{
         font-size:$font-size_3l;
         padding:20% 0%;
@@ -229,7 +356,6 @@ a:hover {
         background-size:  cover;    
 
       .item {
-        
         display: inline-block;
         min-width: 0.3em;
         font-size: 2rem;
@@ -243,9 +369,14 @@ a:hover {
         animation: 2s ease 0s fade-in;
         background: $bg-color_main2;
         background: $bg-color_sub2;
+        // media query ---------------------------------
+        @include mq(sm) { 
+        font-size: $font-size_2l;
+        }
       }
     }
-     // Menu3 ========================
+
+//================== Menu3 ========================
     &__menu3{
         background: $bg-color_main3;
         background: $bg-color_sub3;
@@ -253,6 +384,11 @@ a:hover {
         color:#fff;
         text-shadow: 1px 1px 2px #444;
         padding:5% 0%;
+        // media query ---------------------------------
+        @include mq(sm) { 
+          font-size: $font-size_2l;
+          padding-top:20%;
+        }
         .status-bar{
           color:#444;
           background-color: #e4f0f5;
@@ -263,11 +399,10 @@ a:hover {
           animation:2s ease 0s slide-left forwards;
           list-style: none;
           padding-left:5%;
-          // transition: margin-right 2s;
-          // transition-property: all;
         }
     }
-    // Menu4 ========================
+
+//=================== Menu4 ========================
     &__menu4{
         background: $bg-color_main2;
         background:$bg-color_sub2;
@@ -307,14 +442,17 @@ a:hover {
        }
         //  下部カード ------------------------------
        .card-slider{
-        //  margin:1%;
-        //  width:200%;
+       
         .card{
           background-color: $bg-color_main;
           width:45%;
           margin:1%;
           float:left;
           transition: transform 0.3s ease; // animation
+          // media query ---------------------------------
+          @include mq(sm) { 
+            width:48%;
+          }
           .card_image{
             // display: block;
             width: 100%;
@@ -345,12 +483,6 @@ a:hover {
             height:50vh;
             margin:1%;
             overflow:scroll;
-            // float:left;
-            // transition: transform 0.3s ease; // animation
-            // font-size:12px;
-            // display: flex;
-            // align-items: center;
-            // justify-content: center;
             box-sizing:border-box;
             .card_image{
               // display: block;
@@ -368,90 +500,24 @@ a:hover {
      }
     }
     }
+
+//=================== menu5 =================== 
     &__menu5{
-        background-color: $bg-color_sub3;
+        // --- グラデーション ---
+        background: linear-gradient(to top, rgba(67, 213, 174, 0.7) 0%, rgba(142, 208, 188, 0.7) 100%),url("../img/218400_l.jpg");  /* 背景画像指定 */
+        background-repeat:  no-repeat;  /* 背景の繰り返し設定 */
+        background-position: center;    /* 背景の位置指定 */
+        background-size:cover;  /* 背景のサイズ */
         overflow: hidden;
         z-index:1;
         position: relative;
         top:-5px;
         height:110vh;
+        padding:10%;
     }
-    &__hello{
-      position: relative;
-      float: left;
-      display: flex;
-      -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
-      align-items: center; /* 縦方向中央揃え */
-      -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
-      justify-content: center; /* 横方向中央揃え */
-      height:100%;
-      width:100%;
-      z-index:3;
-      font-size:100px;
-      animation: pulse 1s ease-in forwards;
-      .title{
-        font-size:100px;
-      }
-      .expand{
-        animation: expand 1s ease-in forwards;
-        // font-size:10px;
-        // color:red;
-        // background-color: #fbffd7;
-      }
-    }
+ 
 }
 
-.bar{
-  position: relative;
-  border:5px ridge rgb(255, 255, 255);
-  border-radius: 5%;
-  &__top{
-    // background-color: #affdc662;
-    top:-5%;
-    left:30%;
-    width:35%;
-    height:50%;
-    z-index:2;
-    // animation: 3s ease 0s pulse;
-  }
-  &__right{
-    // background-color: #d7fffe62;
-    top:5%;
-    left:50%;
-    width:60%;
-    height:65%;
-    z-index:2;
-    // animation: 3s ease 0s pulse;
-  }
-  &__left{
-    // background-color: #f0ffd762;
-    top:-55%;
-    left:25%;
-    width:45%;
-    height:50%;
-    transform: rotate(45deg);
-    z-index:2;
-    // animation: 3s ease 0s pulse;
-  }
-  &__bottom{
-    // background-color: #e8d7ff62;
-    top:-130%;
-    left:-10%;
-    width:50%;
-    height:50%;
-    // animation: 3s ease 0s pulse;
-  }
-  &__center{
-    // background-color: #d7fffebb;
-    top:-200%;
-    left:55%;
-    width:60%;
-    height:70%;
-    transform: rotate(135deg);
-    z-index:2;
-    // animation: 2s ease 0s pulse;
-  }
-}
 
 // アニメーション ================================
 
