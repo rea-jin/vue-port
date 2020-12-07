@@ -1,1 +1,1 @@
-web: npx gulp
+web: gulp
