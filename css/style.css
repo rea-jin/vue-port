@@ -441,6 +441,16 @@ a:hover {
   padding: 10%;
 }
 
+.content .content__menu5 .contact {
+  text-align: center;
+}
+
+.content .content__menu5 .contact button {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
 @keyframes pulse {
   0% {
     background: #1fac7a;
