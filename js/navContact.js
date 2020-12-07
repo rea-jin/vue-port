@@ -7,14 +7,22 @@ Vue.component('nav-contact', {
             errors: [],
             name: null,
             email: null,
-            title: null
+            title: null,
+
+            //下記は「入力フォーム」と「確認用文字列」の表示項目を切り替えます。
+            //trueとなっている項目は消えます。
+            //v-bind:classでclassをつけたり消したりできます。
+            //display:none;が設定されたclass(今回はdelatearea)がついたり消えたりします。
+            //trueになった方が消えるのは、delateareaがtrueで付与されるためです。
+            inputdata:false,
+            makesure:true
         }
     },
     template: `
     <div class="content__menu5">
         <form @submit.prevent="exec" class="contact"
         id="app"
-        @submit="checkForm" // 送信・・・・・・・２
+        @submit="checkForm" 
         action="https://vuejs.org/"
         method="post"
         >
@@ -38,13 +46,22 @@ Vue.component('nav-contact', {
             <textarea cols="40" rows="10" maxlength="30" placeholder="まだ使えません"></textarea>
             <button type="submit" 
                     value="submit"
-                    @clickbtn // 送信確認・・・・・・・１
+                    @clickbtn 
                     >submit</button>
         </form>
 
     </div>`,
 
     methods:{
+      clickbtn: function () {
+        //dataのinputdataにtrueを代入します。
+        //するとhtmlのv-bind:classが指定された箇所でdelateareaが付与されます。
+        this.inputdata = true
+        //dataのmakesureにfalseを代入します。
+        //するとhtmlのv-bind:classが指定された箇所でdelateareaが解除されます。
+        this.makesure = false
+        //上記だと、該当箇所の入力フォームが消えて、確認項目が表示されます。
+      },
       checkForm: function (e) {
         this.errors = [];
   
