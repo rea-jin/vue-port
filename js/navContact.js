@@ -18,14 +18,15 @@ Vue.component('nav-contact', {
             makesure:true
         }
     },
-    // @submit.prevent="exec" class="contact"
-    // id="app"
-    // @submit="checkForm" 
-    // action="https://vuejs.org/"
-    // method="post"
+    
     template: `
     <div class="content__menu5">
         <form
+        @submit.prevent="exec" class="contact"
+    id="app"
+    @submit="checkForm" 
+    action=""
+    method="post"
         >
         <!-- エラー表示 -->
         <p v-if="errors.length">

@@ -1,0 +1,136 @@
+@keyframes rotate-to-right {
+    0%   {
+        transform: rotate(0deg);
+    }
+    25%  {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate-circle-left {
+    0%   { transform: rotate(30deg); }
+    35%  { transform: rotate(135deg); }
+    50%  { transform: rotate(80deg); }
+    75%  { transform: rotate(160deg);}
+    100% { transform: rotate(70deg); }
+  }
+
+
+        
+  @keyframes status-bar{
+    0%{
+      width:50%;
+    }
+    35%{
+      width:30%;
+    }
+    75%{
+      width:60%;
+    }
+    100%{
+      width:80%;
+    }
+  }
+
+  @keyframes light{
+    0%{
+      opacity:0.1;
+    }
+    35%{
+      opacity:0.3;
+    }
+    75%{
+      opacity:0.8;
+    }
+    100%{
+      opacity:1;
+    }
+}
+
+// アニメーション ================================
+
+@keyframes pulse {
+    0% {
+      background: rgb(31,172,122);
+      background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      border:3px inset #fff;
+      border-radius:200px;
+      transform: scale(1);
+      font-size:100%;
+      color:rgba(255, 255, 255, 0);
+    }
+  
+    100%{
+      left:-15px;
+      background: rgb(31,172,122);
+      background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      border:15px ridge #fff;
+      border-radius:600px;
+      transform: scale(0.4);
+      font-size:100%;
+      color:#fbffd7;
+      text-shadow: #fcfcfc;
+    }
+  }
+  
+  @keyframes expand {
+    0% {
+      background: rgb(243, 255, 251);
+      background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      border:3px inset #fff;
+      border-radius:200px;
+      transform: scale(0.4);
+      font-size:100%;
+      color:rgba(255, 255, 255, 0);
+    }
+    100%{
+      background: rgb(251, 255, 254);
+      background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      transform: scale(1);
+      font-size:0%;
+      color:#fbffd7;
+      text-shadow: #fcfcfc;
+    }
+  }
+  
+  @keyframes text-in {
+    0% {
+      transform: translate(0, -20px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-in {
+    0% {
+      position:relative;
+      top:20px;
+      display:none;
+      color:rgba(255, 255, 255, 0);
+      opacity:0; 
+    }
+    100%{
+      position:relative;
+      top:0;
+    }
+  }
+  
+  @keyframes slide-left {
+    0%{
+      width:30%;
+    }
+    100%{
+      width:70%;
+      // ここを変数にしたい。
+    }
+  }
+  
+  

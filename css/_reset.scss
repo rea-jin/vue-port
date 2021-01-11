@@ -1,0 +1,100 @@
+
+// ==============================
+// 変数
+// ==============================
+// カラーコード
+$font-color_default: rgb(10, 10, 10);
+$font-color_sub: #fcfcfc; 
+$color_shadow: #d7fffe;
+
+$bg-color_main:#fcfcfc;
+$bg-color_main1:rgba(191,251,181,1);
+$bg-color_main2:#48a0a7e8;
+$bg-color_main3:rgba(92,179,159,1);
+$bg-color_main4:rgba(31,172,122,1);
+$bg-color_sub1:linear-gradient(0deg, rgba(191,251,181,1) 10%, rgba(92,179,159,1) 50%, rgba(161,248,254,1) 90%);
+$bg-color_sub2:linear-gradient(180deg, rgba(26,159,193,1) 0%, rgba(161,248,254,1) 25%, rgba(101,168,162,1) 50%);
+$bg-color_sub3:linear-gradient(90deg, rgba(92,179,158,1) 25%, rgba(144,218,238,1) 60%, rgba(200,245,255,1) 95%);
+
+
+// サイトの幅
+$site-width: 1024px;
+
+// skillのバー
+// ここでそれぞれの値を受け取る？
+
+
+// フォントサイズ
+$font-size_s: 12px;
+$font-size_m: 14px;
+$font-size_default: 16px;
+$font-size_l: 18px;
+$font-size_xl: 0.8rem;
+$font-size_2l: 1.2rem;
+$font-size_3l: 1.4rem;
+$font-size_4l: 1.8rem;
+
+// paddingやmargin
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_xxl: 30px;
+$space_3l: 40px;
+
+$font-family_corp: 'Amatic SC', cursive;
+
+// メディアクエリのブレークポイント設定-----------------------------
+$breakpoint-sm: 414px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1000px !default;
+
+// マップ型変数を使うと便利 連想配列のようなもの
+$breakpoints: ( // プロパティ:値
+  'sm': 'screen and (max-width: 414px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+
+// smacssの設計思想
+// ==================================
+// base
+// ==================================
+html, body { //変数名で値を決める
+    width: 100%;
+    color: $font-color_default;
+    font-size: $font-size_default;
+    line-height: 1.6;
+    font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic",
+     sans-serif; // TODO:リファクタ必要（変数にする）
+    //  インテリJなどの統合環境開発ソフト IDE などだと、TODOと入れるとコメントアウトされる
+    text-size-adjust: 100%;
+    letter-spacing: 0.1em;
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  
+  p, a { // フォントを見やすく表示させる
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  a {
+    color: $font-color_default;
+    text-decoration: none;
+    transition: .3s;
+  }
+  
+  a:hover {
+    transition: .3s;
+  }
+  
+  .main{
+      display: flex;
+      flex-direction: row;
+      background:$bg-color_main1;
+      background: $bg-color_sub1;
+    }
+  

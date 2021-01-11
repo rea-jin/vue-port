@@ -1,137 +1,13 @@
 // =============================
 // ファイル取り込み
 // =============================
+@import "reset";
 @import "mixin";
 // google fonts ----------------
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-// ==============================
-// 変数
-// ==============================
-// カラーコード
-$font-color_default: rgb(10, 10, 10);
-$font-color_sub: #fcfcfc; 
-$color_shadow: #d7fffe;
 
-$bg-color_main:#fcfcfc;
-$bg-color_main1:rgba(191,251,181,1);
-$bg-color_main2:rgba(161,248,254,1);
-$bg-color_main3:rgba(92,179,159,1);
-$bg-color_main4:rgba(31,172,122,1);
-$bg-color_sub1:linear-gradient(45deg, rgba(191,251,181,1) 10%, rgba(92,179,159,1) 50%, rgba(161,248,254,1) 90%);
-$bg-color_sub2:linear-gradient(180deg, rgba(26,159,193,1) 0%, rgba(161,248,254,1) 25%, rgba(101,168,162,1) 50%);
-$bg-color_sub3:linear-gradient(90deg, rgba(92,179,158,1) 25%, rgba(144,218,238,1) 60%, rgba(200,245,255,1) 95%);
+@import "animation";
 
-
-// サイトの幅
-$site-width: 1024px;
-
-// skillのバー
-// ここでそれぞれの値を受け取る？
-
-
-// フォントサイズ
-$font-size_s: 12px;
-$font-size_m: 14px;
-$font-size_default: 16px;
-$font-size_l: 18px;
-$font-size_xl: 0.8rem;
-$font-size_2l: 1.2rem;
-$font-size_3l: 1.6rem;
-$font-size_4l: 1.8rem;
-
-// paddingやmargin
-$space_s: 5px;
-$space_m: 10px;
-$space_l: 15px;
-$space_xl: 20px;
-$space_xxl: 30px;
-$space_3l: 40px;
-
-$font-family_corp: 'Amatic SC', cursive;
-
-// メディアクエリのブレークポイント設定-----------------------------
-$breakpoint-sm: 414px !default;
-$breakpoint-md: 768px !default;
-$breakpoint-lg: 1000px !default;
-
-// マップ型変数を使うと便利 連想配列のようなもの
-$breakpoints: ( // プロパティ:値
-  'sm': 'screen and (max-width: 414px)',
-  'md': 'screen and (max-width: 768px)',
-  'lg': 'screen and (max-width: 1000px)',
-  'xl': 'screen and (max-width: 1200px)',
-) !default;
-
-// ==============================
-// mixin
-// ==============================
-// @mixinは関数のようなものを作れる
-// https://www.webcreatorbox.com/tech/sass-mixin
-// map-get()の第一引数に変数名、第二引数にマップ型のキーを渡すと、マップ型の値が返る
-// #{}は「インターポーレーション」といって、演算できない箇所、
-// 変数使えない箇所でも使えるようにするものcalcなどでよく使う
-// http://book.scss.jp/code/c4/08.html
-
-// ブレイクポイントを定義した変数をmq()という@mixinで呼び出す
-@mixin mq($breakpoint: md) { // mqは関数名 引数はsm 他のもできる
-  @media #{map-get($breakpoints, $breakpoint)} { // @mediaでメディアクエリーの関数を作る
-    @content; 
-  }
-}
-// 呼び出す時、includeとする
-/*
-.foo {
-  color: blue;
-  @include mq() { // 引数を省略（初期値はmdの768px）
-    color: yellow;
-  }
-  @include mq(lg) { // 引数を個別に指定
-    color: red;
-  }
-}*/
-// @media screen and (max-width: 414px)で返ってくる
-
-
-
-// smacssの設計思想
-// ==================================
-// base
-// ==================================
-html, body { //変数名で値を決める
-  width: 100%;
-  color: $font-color_default;
-  font-size: $font-size_default;
-  line-height: 1.6;
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic",
-   sans-serif; // TODO:リファクタ必要（変数にする）
-  //  インテリJなどの統合環境開発ソフト IDE などだと、TODOと入れるとコメントアウトされる
-  text-size-adjust: 100%;
-  letter-spacing: 0.1em;
-  padding:0;
-  margin:0;
-  box-sizing: border-box;
-}
-
-p, a { // フォントを見やすく表示させる
-  -webkit-font-smoothing: antialiased;
-}
-
-a {
-  color: $font-color_default;
-  text-decoration: none;
-  transition: .3s;
-}
-
-a:hover {
-  transition: .3s;
-}
-
-.main{
-    display: flex;
-    flex-direction: row;
-    background:$bg-color_main1;
-    background: $bg-color_sub1;
-  }
 
 // ==================================
 // SideBar
@@ -242,69 +118,274 @@ a:hover {
         // background-color: #fbffd7;
       }
     }
-    // bar--------------------------------
+    // 四角背景 --------------------------------
     .bar{
       position: relative;
-      border:5px ridge rgb(255, 255, 255);
+      // border:5px ridge rgb(255, 255, 255);
+      background-color:$bg-color_main;
+      opacity:0.3;
       border-radius: 5%;
+      z-index:2;
       &__top{
-        // background-color: #affdc662;
         top:-5%;
-        left:30%;
+        left:70%;
         width:35%;
-        height:50%;
-        z-index:2;
-        // animation: 3s ease 0s pulse;
+        height:40%;
       }
       &__right{
-        // background-color: #d7fffe62;
-        top:5%;
-        left:50%;
-        width:60%;
-        height:65%;
-        z-index:2;
-        // animation: 3s ease 0s pulse;
+        top: -12%;
+        left: 40%;
+        width: 60%;
+        height: 2%;
       }
       &__left{
-        // background-color: #f0ffd762;
-        top:-55%;
-        left:25%;
-        width:45%;
-        height:50%;
-        transform: rotate(45deg);
-        z-index:2;
-        // animation: 3s ease 0s pulse;
+        top: -11%;
+        left: 0%;
+        width: 100%;
+        height: 42%;
       }
       &__bottom{
-        // background-color: #e8d7ff62;
-        top:-130%;
-        left:-10%;
-        width:50%;
-        height:50%;
-        // animation: 3s ease 0s pulse;
+        top: -15%;
+        left: 69%;
+        width: 23%;
+        height: 18%;
+        animation:rotate-to-right 2s linear reverse infinite;
       }
       &__center{
-        // background-color: #d7fffebb;
-        top:-200%;
-        left:55%;
-        width:60%;
-        height:70%;
+        top: -34%;
+        left: 68%;
+        width: 25%;
+        height: 20%;
         transform: rotate(135deg);
-        z-index:2;
-        // animation: 2s ease 0s pulse;
+        z-index: 3;
+        animation:rotate-to-right 2s linear infinite;
       }
-      &__circle{
-        // background-color: #d7fffebb;
-        top:0;
-        left:50%;
-        width:60%;
-        height:500px;
-        transform: rotate(135deg);
-        z-index:3;
-        border-radius:10%;
-        // animation: 2s ease 0s pulse;
+      // &__circle{
+      //   // background-color: #d7fffebb;
+      //   top:0%;
+      //   left:50%;
+      //   width:300px;
+      //   height:500px;
+      //   transform: rotate(135deg);
+      //   z-index:3;
+      //   border-radius:10%;
+      //   // animation: 2s ease 0s pulse;
+      // }
+    }
+    
+    // ガジェット --------------------------------------
+    // circle --------------------------------
+      .circle {
+        /*バー本体の後ろ背景*/    
+        position: absolute;
+        top: 5%;
+        left: 70%;
+        width: 200px;
+        height: 195px;
+        background: $bg-color-main;
+        opacity: 0.6;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+        z-index: 10;
+        float: left;
+      &::before {
+        /*左側のバー*/
+        content: "";
+        display: block;
+        position: absolute;
+        top: 5%;
+        left: -100px;
+        width: 200px;
+        height: 200px;
+        background: $bg-color_main2;
+        transform-origin: right 60px;
+        z-index: 11;
+          animation: rotate-circle-left 1s linear forwards infinite;
+        }
+      &::after {
+        /*右側のバー*/
+        content: "";
+        display: block;
+        position: absolute;
+        left: 100px;
+        width: 200px;
+        height: 200px;
+        background: $bg-color_main;
+        transform-origin: left 60px;
+        z-index: 12;
+          /*アニメーションの色に変わる*/
+          /* animation: rotate-leftToright 2s linear forwards; */
+        }
+       }
+      .circle .circle-inner {
+        position: absolute;
+        top:2%;
+        left: 2%;
+        width: 190px;
+        height: 180px;
+        padding-top: 8px;
+        background: $bg-color_main2;
+        border-radius: 50%;
+        z-index: 13;
+        opacity: 1;
+      }
+
+      .circle2 {
+        /*バー本体の後ろ背景*/    
+        position: absolute;
+        top:9%;
+        left:76%;
+        width: 120px;
+        height: 120px;
+        background: $bg-color_main2;
+        opacity:1;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+        z-index: 14;
+       &::before {
+      /*左側のバー*/
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100;
+        left: -60px;
+        width: 120px;
+        height: 120px;
+        background: $bg-color_sub1;
+        transform-origin: right 60px;
+        z-index: 15;
+        animation: rotate-circle-left 3s linear forwards infinite;
+      }
+       &::after {
+      /*右側のバー*/
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 60px;
+        width: 120px;
+        height: 120px;
+        background:$bg-color_sub1;
+        transform-origin: left 60px;
+        z-index: 16;
+        /*アニメーションの色に変わる*/
+        /* animation: rotate-leftToright 2s linear forwards; */
       }
     }
+      .circle2 .circle-inner2 {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100px;
+        height: 62px;
+        padding-top: 38px;
+        background:$bg-color_main2;
+        border-radius: 50%;
+        z-index: 17;
+        opacity:1;
+      }
+
+      // bar --------------------------
+      .a, .b, .c{
+        position:absolute;
+        content:"";
+        height:20px;
+        margin:5px;
+        /* float:left; */
+      }
+      .animation-status-bar{
+        animation-name:status-bar; /*名前*/
+        // animation-duration:.3s; /*開始から終了までの時間*/
+        animation-timing-function: linear; /*動作速度*/
+        /* animation-delay: -1s; */ /*開始時間*/
+        animation-iteration-count:infinite; /*動作回数*/
+        animation-direction:alternate; /*再生方向*/
+        /* animation-fill-mode:forwards; */ /*終了時の状態*/
+        // animation-play-state:paused; /*実行と停止*/
+        
+      }
+      .a{
+        top:10%;
+        width:300px;
+        background-color:$bg-color_main;
+        animation-delay:0s;
+        animation-duration:.3s;
+      }
+      .b{
+        top:15%;
+        width:250px;
+        opacity:0.8;
+        background-color:$bg-color_main;
+        animation-delay:.5s;
+        animation-duration:.5s;
+      }
+      .c{
+        top:20%;
+        width:200px;
+        opacity: 0.5;
+        background-color:$bg-color_main;
+        animation-delay:1s;
+        animation-duration:.8s;
+      }
+
+      }
+
+      // square ----------------------------
+        .d, .e, .f, .g{
+          position:absolute;
+          top:400px;
+          content:"";
+          width:50px;
+          height:50px;
+          margin:5px;
+          float:left;
+        }
+        .animation-light{
+          animation-name:light; /*名前*/
+          animation-duration:.3s; /*開始から終了までの時間*/
+          animation-timing-function: linear; /*動作速度*/
+          /* animation-delay: -1s; */ /*開始時間*/
+          animation-iteration-count:infinite; /*動作回数*/
+          animation-direction:alternate; /*再生方向*/
+          /* animation-fill-mode:forwards; */ /*終了時の状態*/
+          /* animation-play-state:paused; */ /*実行と停止*/
+          
+        }
+        .d{
+          left:5%;
+          background-color:yellow;
+          animation-delay:0s;
+          &::before{
+          position: absolute;
+          left:50%;
+          content:"";
+          display: block;
+          width:50px;
+          height: 50px;
+          background-color:rgb(115, 247, 167);
+          // animation-delay:.5s;
+          }
+        }
+        .e{
+          left:10%;
+          content:"";
+          background-color:red;
+          animation-delay:1s;
+        }
+        .f{
+          left:15%;
+          content:"";
+          background-color:blue;
+          animation-delay:1.5s;
+        }
+        .g{
+          left:20%;
+          content:"";
+          background-color:rgb(115, 247, 167);
+          animation-delay:2s;
+        }
 
 // コンテンツ別
 .content{
@@ -312,10 +393,11 @@ a:hover {
 //======================= Menu1 ========================
     &__home{
       background: $bg-color_main4;
-      background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      // background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
+      background:$bg-color_main2;
       .modal-mask {
         position: absolute;
-        z-index: 5;
+        z-index: 55;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, .5);
@@ -370,7 +452,7 @@ a:hover {
         background: $bg-color_main2;
         background: $bg-color_sub2;
         // media query ---------------------------------
-        @include mq(sm) { 
+        @include mq(md) { 
         font-size: $font-size_2l;
         }
       }
@@ -426,17 +508,26 @@ a:hover {
           padding:2%;
           text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
           border-radius: 50px;
-          background: #efffff;
-          box-shadow:  20px 20px 60px #bed5d9, 
-             -20px -20px 60px #ffffff;
+          background: #47c9e6;
+          box-shadow:  12px -12px 24px #3597ad, 
+             -12px 12px 24px #59fbff;
+             .fab{
+               font-size:1.5rem;
+               padding:0 10px;
+             }
         }
         .menu-button--active{
-          color:#ffce2f;
+          color:#e3ffe4;
           text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
           border-radius: 50px;
-          background: linear-gradient(145deg, #cae1e6, #f0ffff);
-          box-shadow:  20px 20px 60px #bed5d9, 
-             -20px -20px 60px #ffffff;
+          // background: linear-gradient(145deg, #cae1e6, #f0ffff);
+          // box-shadow:  20px 20px 60px #bed5d9, 
+          //    -20px -20px 60px #ffffff;
+            //  box-shadow:  19px 19px 39px #277f93, 
+            //  -19px -19px 39px #45e3ff;
+            background: #4fabbf;
+            box-shadow: inset 12px -12px 25px #3b808f, 
+              inset -12px 12px 25px #78e4fc;
         }
         
        }
@@ -520,6 +611,7 @@ a:hover {
           display: block;
           margin: 0 auto;
           font-size:1.5rem;
+          
         }
         }
         
@@ -528,80 +620,3 @@ a:hover {
 }
 
 
-// アニメーション ================================
-
-@keyframes pulse {
-  0% {
-    background: rgb(31,172,122);
-    background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
-    border:3px inset #fff;
-    border-radius:200px;
-    transform: scale(1);
-    font-size:100%;
-    color:rgba(255, 255, 255, 0);
-  }
-
-  100%{
-    left:-15px;
-    background: rgb(31,172,122);
-    background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
-    border:15px ridge #fff;
-    border-radius:600px;
-    transform: scale(0.4);
-    font-size:100%;
-    color:#fbffd7;
-    text-shadow: #fcfcfc;
-  }
-}
-
-@keyframes expand {
-  0% {
-    background: rgb(243, 255, 251);
-    background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
-    border:3px inset #fff;
-    border-radius:200px;
-    transform: scale(0.4);
-    font-size:100%;
-    color:rgba(255, 255, 255, 0);
-  }
-  100%{
-    background: rgb(251, 255, 254);
-    background: radial-gradient(circle, rgba(31,172,122,1) 10%, rgba(78,227,230,1) 50%, rgba(26,159,193,1) 90%);
-    transform: scale(1);
-    font-size:0%;
-    color:#fbffd7;
-    text-shadow: #fcfcfc;
-  }
-}
-
-@keyframes text-in {
-  0% {
-    transform: translate(0, -20px);
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    position:relative;
-    top:20px;
-    display:none;
-    color:rgba(255, 255, 255, 0);
-    opacity:0; 
-  }
-  100%{
-    position:relative;
-    top:0;
-  }
-}
-
-@keyframes slide-left {
-  0%{
-    width:30%;
-  }
-  100%{
-    width:70%;
-    // ここを変数にしたい。
-  }
-}
-}

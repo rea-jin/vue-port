@@ -14,6 +14,12 @@ Vue.component('nav-works', {
             <li class="menu-button" @click="menu='lp'" :class="{ 'menu-button--active':menu === 'lp'}">ランディングページ</li>
             <li class="menu-button" @click="menu='web'" :class="{ 'menu-button--active':menu === 'web'}">webサービス</li>
             <li class="menu-button" @click="menu='word'" :class="{ 'menu-button--active':menu === 'word'}">wordpressサイト</li>
+            <li class="menu-button"  >
+            <a href="https://github.com/rea-jin">
+                <i class="fab fa-github" style="color:darkorchid;"></i>
+            </a>
+            </li>
+
         </ul>
         <hr>
 
