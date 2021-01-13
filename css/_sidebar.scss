@@ -1,0 +1,60 @@
+// ==================================
+// SideBar
+// ==================================
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:30%;
+    height:100vh;
+    // media query ---------------------------------
+    @include mq(sm) { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 80px;
+    z-index: 10;
+    }
+    &__home, &__menu2, &__menu3, &__menu4, &__menu5{
+        background: $bg-color_main;
+        font-size:$font-size_2l;
+        box-sizing: border-box;
+        width:50%;
+        height:10%;
+        display: flex;
+        -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+        align-items: center; /* 縦方向中央揃え */
+        -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+        justify-content: center; /* 横方向中央揃え */
+        border:5px ridge rgb(62, 148, 44);
+        border-radius:50px;
+        // media query ---------------------------------
+        @include mq(sm) { 
+          display: none;
+       
+        }
+      }
+    &__active{
+        background-color: $bg-color_main;
+        font-size:$font-size_3l;
+        box-sizing: border-box;
+        width:110%;
+        height:10%;
+        display: flex;
+        -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+        align-items: center; /* 縦方向中央揃え */
+        -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+        justify-content: center; /* 横方向中央揃え */
+        border:none;
+        border-radius:0px;
+         // media query ---------------------------------
+         @include mq(sm) { 
+          font-family: 'Oswald', sans-serif;
+          width:100px;
+          height: 100px;
+          // border-radius: 40%;
+        }
+    }
+}
